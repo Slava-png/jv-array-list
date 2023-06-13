@@ -9,7 +9,6 @@ public class ArrayList<T> implements List<T> {
     private T[] array;
     private int size;
 
-
     public ArrayList() {
         array = (T[]) new Object[DEFAULT_CAPACITY];
         size = 0;
@@ -25,7 +24,8 @@ public class ArrayList<T> implements List<T> {
 
     public void checkIndex(int index) {
         if (index < -1 || index > size - 1) {
-            throw new ArrayListIndexOutOfBoundsException("There is no such element with index " + index);
+            throw new ArrayListIndexOutOfBoundsException("There is no such " +
+                         "element with index " + index);
         }
     }
 
@@ -74,11 +74,9 @@ public class ArrayList<T> implements List<T> {
     public T remove(int index) {
         checkIndex(index);
         T deletedElement = array[index];
-
         System.arraycopy(array, index + 1, array, index, size - index - 1);
         array[size] = null;
         size--;
-
         return deletedElement;
     }
 
@@ -90,7 +88,8 @@ public class ArrayList<T> implements List<T> {
             }
         }
 
-        throw new NoSuchElementException("There is no such element in the arrayList with value " + element);
+        throw new NoSuchElementException("There is no such element in " +
+                    "the arrayList with value " + element);
     }
 
     @Override
